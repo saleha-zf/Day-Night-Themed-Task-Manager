@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/canvas-confetti/1.9.3/confetti.js" integrity="sha512-d+ZW87DH4Q33gcdLD4cdESUlAHokqxQ4dxprd5gvaerCF/Gkob/5FXOmtMEfbhna31eMTjH4TcLKLdIosh+Z3Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task Manager</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.0.0/dist/confetti.browser.min.js"></script>
+
+</head>
+<body>
+  <!-- Sticky Navbar -->
+  <nav id="navbar" class="navbar">
+    <h1 id="navbarTitle">Day Time Tasks</h1>
+    <button id="themeToggle" class="theme-toggle">
+      <span id="sunIcon">&#9728;</span>
+      <span id="moonIcon" class="hidden">&#9790;</span>
+    </button>
+    <span id="currentTime" class="neon-time"></span>  <!-- New span to show current time -->
+  </nav>
+  
+
+  <!-- Main Layout -->
+  <div class="layout">
+    <!-- Left Panel -->
+    <div id="leftPanel" class="panel">
+      <h2>Add a New Task</h2>
+      <form id="taskForm">
+        <input id="taskInput" type="text" placeholder="Skincare, sleep routine">
+        <input id="taskTime" type="time">
+        <select id="taskPriority">
+          <option value="regular">Regular</option>
+          <option value="medium">Medium</option>
+          <option value="urgent">Urgent</option>
+        </select>
+        <button type="submit" class="add-task-button">Add Task</button>
+      </form>
+    </div>
+
+    <!-- Right Section -->
+    <div id="rightSection" class="section">
+      <ul id="taskList" class="task-list"></ul>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,307 @@
+/* General Styles */
+body {
+    margin: 0;
+    font-family: Montserrat, sans-serif;
+    transition: background-color 0.5s, color 0.5s;
+    padding: 0;
+  }
+  
+  /* Sticky Navbar */
+  .navbar {
+    position: sticky;
+    top: 0;
+    background-color: var(--navbar-bg);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  }
+  .navbar h1 {
+    margin: 0;
+  }
+  .theme-toggle {
+    background: none;
+    border: none;
+    font-size: 30px;
+    cursor: pointer;
+    color: var(--navbar-text);
+  }
+  .theme-toggle span {
+    display: none;
+  }
+  .theme-toggle #sunIcon {
+    display: inline;
+  }
+
+
+  /* Make sun and moon icons bigger */
+#sunIcon, #moonIcon {
+    font-size: 48px;  /* Adjust size as needed */
+    animation: blink 1s infinite alternate; /* Apply blinking animation */
+  }
+  
+  /* Neon blinking effect */
+  @keyframes blink {
+    0% {
+      opacity: 1;
+      text-shadow: 0 0 10px #fff, 0 0 20px #ff00ff, 0 0 30px #ff00ff, 0 0 40px #ff00ff, 0 0 50px #ff00ff, 0 0 75px #ff00ff;
+    }
+    100% {
+      opacity: 0.5;
+      text-shadow: 0 0 10px #fff, 0 0 20px #ff00ff, 0 0 30px #ff00ff, 0 0 40px #ff00ff, 0 0 50px #ff00ff, 0 0 75px #ff00ff;
+    }
+  }
+  
+  #currentTime {
+    font-size: 1.5rem;
+    color: var(--navbar-text);
+  }
+  
+  #navbarTitle {
+    color: inherit; /* Default color for day mode */
+  }
+  
+  /* Night Mode Navbar Title Color */
+  body[data-theme='night'] #navbarTitle {
+    color: #1E90FF; /* Cool Blue color for night mode */
+  }
+  /* Layout */
+  .layout {
+    display: flex;
+    height: calc(100vh - 60px);
+    transition: background-color 0.5s, color 0.5s;
+  }
+  .panel {
+    width: 25%;
+    padding: 20px;
+    background-color: var(--panel-bg);
+    color: var(--panel-text);
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  }
+  .section {
+    width: 75%;
+    padding: 20px;
+    background-color: var(--section-bg);
+    color: var(--section-text);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-evenly;
+  }
+  
+  /* Task Form */
+  form input,
+  form select,
+  form button {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box;
+  }
+  form button {
+    background-color: var(--button-bg);
+    color: var(--button-text);
+    border: none;
+    cursor: pointer;
+  }
+  form input::placeholder {
+    color: lightgray;
+  }
+  
+
+  /* Make sure the canvas is correctly positioned and doesn't obstruct other content */
+canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 9999; /* Ensure it's on top */
+  }
+  
+  /* Task List */
+  .task-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-evenly;
+  }
+  .task-item {
+    padding: 20px;
+    background-color: var(--note-bg);
+    border-radius: 5px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+    color: var(--note-text);
+    width: 200px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 200px;
+    position: relative;
+    margin-bottom: 20px;
+  }
+  
+  /* Responsive Layout */
+  @media (max-width: 900px) {
+    .task-item {
+      width: calc(33.33% - 20px);
+    }
+  }
+  @media (max-width: 768px) {
+    .task-item {
+      width: calc(50% - 20px);
+    }
+  }
+  @media (max-width: 580px) {
+    .task-item {
+      width: 100%;
+    }
+  }
+  
+  /* Task Item Content */
+  .task-item .priority {
+    font-weight: bold;
+    margin-bottom: 10px;
+    font-size: 14px;
+    text-transform: uppercase;
+    color: var(--priority-text);
+  }
+  .task-item .task-time {
+    font-size: 12px;
+    color: var(--time-text);
+    margin-bottom: 10px;
+  }
+  .task-item .task-description {
+    font-size: 14px;
+    
+    margin-bottom: 10px;
+  }
+  .task-item .finish-task {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  .task-item .finish-task:disabled {
+    background-color: #d3d3d3;
+  }
+  
+  /* Delete Task Icon */
+  .delete-task {
+    font-weight: bold;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 20px;
+    color: #d9534f;
+  }
+  .task-item .delete-task:hover {
+    color: #d50000;
+  }
+  
+  /* Sticky Note Colors Based on Priority */
+  .task-item.low {
+    background-color: #fff9e1;
+  }
+  .task-item.medium {
+    background-color: #cfe8cc;
+  }
+  .task-item.urgent {
+    background-color: #f7d1d1;
+  }
+  
+  /* Priority Colors */
+  .low .priority {
+    color: #8b8800;
+  }
+  .medium .priority {
+    color: #015e28;
+  }
+  .urgent .priority {
+    color: #D32F2F;
+  }
+  
+  /* Themes */
+  :root {
+    --navbar-bg: #cce5cc;
+    --navbar-text: #333;
+    --panel-bg: #fff5c8;
+    --panel-text: #000;
+    --section-bg: #fff9e1;
+    --section-text: #000;
+    --button-bg: #4caf50;
+    --button-text: #fff;
+    --note-bg: #ffeeac;
+    --note-text: #725e00;
+    --time-text: #000;
+  }
+  [data-theme="night"] {
+    --navbar-bg: #1f2b38;
+    --navbar-text: #ecf0f1;
+    --panel-bg: #1c2936;
+    --panel-text: #ecf0f1;
+    --section-bg: #293848;
+    --section-text: #ecf0f1;
+    --button-bg: #3498db;
+    --button-text: #fff;
+    --note-bg: #2b2b3d;
+    --note-text: #ecf0f1;
+    --priority-text: #ecf0f1;
+    --time-text: #004454;
+  }
+  
+  /* Neon Blinking Effect for Current Time */
+  .neon-time {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 10rem;
+    color: #39ff14;
+    text-shadow: 
+      0 0 5px #39ff14, 
+      0 0 10px #39ff14, 
+      0 0 20px #39ff14, 
+      0 0 40px #39ff14, 
+      0 0 80px #39ff14, 
+      0 0 90px #39ff14, 
+      0 0 100px #39ff14;
+    animation: blink 1s infinite alternate;
+  }
+  @keyframes blink {
+    0% { opacity: 1; }
+    100% { opacity: 0.5; }
+  }
+  
+  /* General task text style */
+  .task-description {
+    font-size: 14px;
+    color: #3E2723; /* Default to dark brown for daytime tasks */
+  }
+  
+  /* Daytime task text color */
+  body.daytime .task-description {
+    color: #3E2723; /* Dark brown */
+  }
+  
+  /* Nighttime task text color */
+  body.nighttime .task-description {
+    color: #002e3d; /* Light cool blue */
+  }
+  
+  /* Task Item background color */
+  body.daytime .task-item {
+    background-color: #f8de92; /* Light yellow background */
+  }
+  body.nighttime .task-item {
+    background-color: #b1c5d8; /* Dark background for night mode */
+  }
+  
